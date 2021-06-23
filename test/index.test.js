@@ -1,13 +1,17 @@
-import { expect } from '@hapi/code';
-import Lab from '@hapi/lab';
+const Hapi = require('@hapi/hapi');
+const Code = require('@hapi/code');
+const expect = Code.expect;
+const Lab = require('@hapi/lab');
 const lab = (exports.lab = Lab.script());
 
-import { getServerFactory } from '../src/server';
 lab.describe('To check server is running properly', () => {
   let server;
-
   lab.beforeEach(async () => {
-    server = await getServerFactory();
+    server = new Hapi.Server({
+      host: 'localhost',
+      port: process.env.PORT,
+    });
+    await server.register([require('../app/routes/index.js')]);
     await server.start();
   });
 
@@ -15,16 +19,12 @@ lab.describe('To check server is running properly', () => {
     await server.stop();
   });
 
-  lab.it('responds status 200 and with message OK', () => {
-    server.inject(
-      {
-        method: 'get',
-        url: '/',
-      },
-      (response) => {
-        expect(response.statusCode).to.equal(200);
-        expect(response.result).to.equal({ message: 'OK' });
-      }
-    );
+  lab.it('responds status 200 and with message OK', async () => {
+    const response = await server.inject({
+      method: 'get',
+      url: '/',
+    });
+    expect(response.statusCode).to.equal(200);
+    expect(response.result).to.equal({ message: 'OK' });
   });
 });
