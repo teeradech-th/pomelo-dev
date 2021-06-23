@@ -9,6 +9,13 @@ const composeOptions = {
 };
 
 /**
+ * Manual register babel which required by hapi-react-views
+ */
+require('@babel/register')({
+  presets: ['@babel/preset-react', '@babel/preset-env'],
+});
+
+/**
  * Composing manifest and start server
  */
 const compose = async () => {
@@ -19,15 +26,13 @@ const compose = async () => {
         jsx: HapiReactViews,
       },
       relativeTo: __dirname,
-      path: './app/views',
+      path: 'app/views/',
     });
     await server.start();
     console.info(`Server started at ${server.info.uri}`);
-    return server;
   } catch (err) {
     console.error(err);
     process.exit(1);
   }
 };
-
-exports.default = compose;
+compose();
