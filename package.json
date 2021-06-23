@@ -23,6 +23,6 @@
   },
   "scripts": {
     "start": "nodemon --exec babel-node src/index.js",
-    "test": "lab -v test/*.js"
+    "test": "babel-node ./node_modules/@hapi/lab/bin/lab -v -l -L test/*.js"
   }
 }
