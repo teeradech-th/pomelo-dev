@@ -2,13 +2,12 @@ import { expect } from '@hapi/code';
 import Lab from '@hapi/lab';
 const { afterEach, beforeEach, describe, it } = (exports.lab = Lab.script());
 
-import { init } from '../src/server';
-describe('Server is running', () => {
+import { getServerFactory } from '../src/server';
+describe('To check server is running properly', () => {
   let server;
 
   beforeEach(async () => {
-    console.log(init);
-    server = await init();
+    server = await getServerFactory();
     await server.start();
   });
 

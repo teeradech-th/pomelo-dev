@@ -1,12 +1,16 @@
 import Hapi from '@hapi/hapi';
 import routes from './routes';
 
-const server = Hapi.server({
-  port: 3000,
+export const server = Hapi.server({
+  port: process.env.PORT || 3000,
   host: 'localhost',
 });
 
-export const init = async () => {
+server.events.on('stop', () => {
+  console.log('Server stopped');
+});
+
+export const getServerFactory = async () => {
   await server.initialize();
   server.route(routes);
   return server;

@@ -1,3 +1,3 @@
-import Server from './server';
+import * as Server from './server';
 
-Server.init().then((server) => server.start());
+Server.getServerFactory().then((server) => server.start());

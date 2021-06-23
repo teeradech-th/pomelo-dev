@@ -1,9 +1,9 @@
 export default [
   {
     path: '/part1',
-    method: 'POST',
+    method: '*',
     handler: (req, res) => {
-      return req.params;
+      return { message: 'part1' };
     },
   },
 ];
