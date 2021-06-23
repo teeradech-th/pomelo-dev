@@ -1,4 +1,5 @@
 import part1 from './part1';
+import part2 from './part2';
 const defaultRoute = {
   path: '/',
   method: '*',
@@ -6,4 +7,4 @@ const defaultRoute = {
     return { message: 'OK' };
   },
 };
-export default [].concat(defaultRoute, part1);
+export default [].concat(defaultRoute, part1, part2);
