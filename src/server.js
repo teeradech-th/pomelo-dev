@@ -6,13 +6,14 @@ export const server = Hapi.server({
   host: 'localhost',
 });
 
+server.route(routes);
+
 server.events.on('stop', () => {
   console.log('Server stopped');
 });
 
 export const getServerFactory = async () => {
   await server.initialize();
-  server.route(routes);
   return server;
 };
 
