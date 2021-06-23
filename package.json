@@ -39,7 +39,8 @@
   },
   "scripts": {
     "start": "PORT=3000 nodemon server.js -e js,jsx",
-    "test": "PORT=3003 lab -c -L -C -l -v --threshold 100 --assert @hapi/code test/*.test.js"
+    "test": "PORT=3003 lab -c -L -C -l -v --threshold 100 --assert @hapi/code test/*.test.js",
+    "test:coverage": "PORT=3003 lab -a @hapi/code test/*.test.js -o coverage.md"
   },
   "peerDependencies": {
     "hapi-swagger": "^14.2.0"
