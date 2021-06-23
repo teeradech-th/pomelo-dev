@@ -21,6 +21,7 @@ require('@babel/register')({
 const compose = async () => {
   try {
     const server = await Glue.compose(Manifest.get('/'), composeOptions);
+    await server.register(Vision);
     server.views({
       engines: {
         jsx: HapiReactViews,
@@ -29,6 +30,7 @@ const compose = async () => {
       path: 'app/views/',
     });
     await server.start();
+    console.log(server.plugins.Vision);
     console.info(`Server started at ${server.info.uri}`);
   } catch (err) {
     console.error(err);

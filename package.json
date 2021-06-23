@@ -10,9 +10,11 @@
     "@babel/register": "^7.14.5",
     "@hapi/glue": "^8.0.0",
     "@hapi/hapi": "^20.1.4",
+    "@hapi/hoek": "^9.2.0",
     "@hapi/inert": "^6.0.3",
     "@hapi/vision": "^6.1.0",
     "axios": "^0.21.1",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
     "confidence": "^5.0.1",
     "dotenv": "^10.0.0",
     "good": "^8.1.2",
@@ -37,7 +39,8 @@
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
     "nodemon": "^2.0.7",
-    "prettier": "^2.3.1"
+    "prettier": "^2.3.1",
+    "react-devtools": "^4.13.5"
   },
   "scripts": {
     "start": "PORT=3000 nodemon server.js -e js,jsx",
